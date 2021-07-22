@@ -1,0 +1,477 @@
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+
+:root
+{
+    --bg-color: #252954;
+    --fondo: #0e0e23;
+    --azul: #4255d4;
+    --font: #9b9ca7;
+    --font2: #e7e8ea;
+    --rojo: #de1c47;
+    --verde: #15a95b;
+    --delay: 0s;
+}
+
+
+html 
+{
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body
+{
+	font-family: 'Poppins', sans-serif;
+	font-weight: 300;
+	font-size: 15px;
+	color: var(--font);
+	background-color: var(--fondo);
+	overflow-x: hidden;
+}
+
+nav
+{
+    background: #141834;
+    background: radial-gradient(circle, #141834 0%, #13162f 100%);
+    box-shadow: 0 16px 12px #0e0e23;
+    width: calc(100% - 20px);
+    padding: 0 10px;
+    -webkit-animation: top 1s both;
+    animation: top 1s both;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    font-size: 15px;
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+nav:before {
+    content: "";
+    width: 100%;
+    height: 25px;
+    position: absolute;
+    top: -25px;
+    left: 0;
+    background-color: #0e0e23;
+}
+
+/* TEXTO */
+
+.text-motivo
+{
+    color: var(--rojo);
+    line-height: 1.15;
+}
+
+.text-sector
+{
+    color: var(--azul);
+    line-height: 1.15;
+}
+.titulo-regis
+{
+    margin-bottom: 15px;
+}
+
+.titulo-comentario
+{
+    margin-bottom: 10px;
+}
+
+h2
+{
+    font-weight: 600;
+    color: var(--font2);
+    margin-bottom: 40px;
+}
+
+/* CONTAINER */
+
+.container-activos-del-dia
+{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.container-comentario
+{
+    background: radial-gradient(circle, #1a2049 0%, #13162f 100%);
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 10px;
+    -webkit-animation: top 1s var(--delay) both;
+    animation: top 1s var(--delay) both;
+}
+
+.container-alerta
+{
+    opacity: 0;
+    display: none;
+    background-color: var(--verde);
+    color: white;
+    position: absolute;
+    width: 90%;
+    height: 80px;
+    top: 60px;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    margin: 0 10px;
+    border-radius: 5px;
+}
+
+.container-selectlist
+{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.container-login
+{
+    text-align: center;
+}
+
+.section
+{
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
+.container-text-opciones
+{
+    text-align: center;
+    margin-top: 25px;
+    padding-bottom: 16px;
+}
+
+.container-text-opciones span
+{
+    padding: 0 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.card-3d-wrap 
+{
+    position: relative;
+    width: 440px;
+    max-width: 100%;
+    height: 470px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    perspective: 800px;
+    margin-top: 35px;
+}
+
+.card-3d-wrapper 
+{
+    width: 100%;
+    height: 100%;
+    position:absolute;    
+    top: 0;
+    left: 0;  
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transition: all 600ms ease-out; 
+}
+
+.card-front, .card-back 
+{
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #1a2049 0%, #0c0f27 100%);
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: 300%;
+    position: absolute;
+    border-radius: 6px;
+    left: 0;
+    top: 0;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.card-back 
+{
+    transform: rotateY(180deg);
+}
+
+.center-wrap
+{
+    /* position: absolute;
+    width: 100%;
+    padding: 0 35px;
+    top: 50%;
+    left: 0;
+    transform: translate3d(0, -50%, 35px) perspective(100px);
+    
+    display: block; */
+    padding: 0 30px;
+    padding-top: 35px;
+}
+
+/* TEXTBOX */
+
+.form-group
+{ 
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0;
+    margin-top: .5rem;
+    width: 100%;
+}
+
+.form-style, .form-style-selectlist
+{
+    padding: 13px 20px;
+    padding-left: 55px;
+    width: calc(100% - 75px);
+    font-weight: 500;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.5px;
+    outline: none;
+    color: var(--font);
+    background-color: var(--fondo);
+    border: none;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+    box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+}
+
+.form-style-selectlist
+{
+    width: 100%;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  
+{
+    -webkit-box-shadow: 0 0 0 30px #0c0c2d inset;
+    -webkit-text-fill-color: white;
+}
+
+.form-style:focus,
+.form-style:active 
+{
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+}
+
+.form-group input:-ms-input-placeholder  
+{
+    color: #c4c3ca;
+    opacity: 0.7;
+    -webkit-transition: all 200ms linear;
+      transition: all 200ms linear;
+}
+
+.form-group input::-moz-placeholder  
+{
+    color: #c4c3ca;
+    opacity: 0.7;
+    -webkit-transition: all 200ms linear;
+      transition: all 200ms linear;
+}
+
+.form-group input:-moz-placeholder  
+{
+    color: #c4c3ca;
+    opacity: 0.7;
+    -webkit-transition: all 200ms linear;
+      transition: all 200ms linear;
+}
+
+.form-group input::-webkit-input-placeholder  
+{
+    color: #c4c3ca;
+    opacity: 0.7;
+    -webkit-transition: all 200ms linear;
+      transition: all 200ms linear;
+}
+
+.form-group input:focus:-ms-input-placeholder  
+{
+    opacity: 0;
+    -webkit-transition: all 200ms linear;
+      transition: all 200ms linear;
+}
+
+.form-group input:focus::-moz-placeholder  
+{
+    opacity: 0;
+    -webkit-transition: all 200ms linear;
+      transition: all 200ms linear;
+}
+
+.form-group input:focus:-moz-placeholder  
+{
+    opacity: 0;
+    -webkit-transition: all 200ms linear;
+      transition: all 200ms linear;
+}
+
+.form-group input:focus::-webkit-input-placeholder  
+{
+    opacity: 0;
+    -webkit-transition: all 200ms linear;
+      transition: all 200ms linear;
+}
+
+.input-icon 
+{
+    position: absolute;
+    top: 0;
+    left: 18px;
+    height: 48px;
+    font-size: 24px;
+    line-height: 48px;
+    text-align: left;
+    color: var(--font2);
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+
+/* CHECKBOX */
+
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked)
+{
+    position: absolute;
+    left: -9999px;
+}
+
+.checkbox:checked + label,
+.checkbox:not(:checked) + label
+{
+    position: relative;
+    display: block;
+    text-align: center;
+    width: 60px;
+    height: 16px;
+    border-radius: 8px;
+    padding: 0;
+    margin: 10px auto;
+    cursor: pointer;
+    background-color: var(--font);
+}
+
+.checkbox:checked + label:before,
+.checkbox:not(:checked) + label:before
+{
+    position: absolute;
+    display: block;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: white;
+    background-color: var(--bg-color);
+    font-family: 'unicons';
+    content: '\eb4f';
+    top: -10px;
+    left: -10px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 24px;
+    transition: all 0.5s ease;
+}
+
+.checkbox:checked + label:before 
+{
+    transform: translateX(44px) rotate(-270deg);
+}
+
+.checkbox:checked ~ .card-3d-wrap .card-3d-wrapper 
+{
+    transform: rotateY(180deg);
+}
+
+/* BOTONES */
+
+.btn-nav
+{
+    color: var(--font);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    transition: 0.3s;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s;
+    font-size: 25px;
+    border: none;
+    background-color: transparent;
+}
+
+.btn-acceder 
+{
+    width: 100%;
+    height: 40px;
+    margin-top: 30px;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--azul);
+    border-radius: 4px;
+    border: none;
+    color: white;
+    box-shadow: 0 8px 24px 0 rgba(66, 85, 212, .3);
+    -webkit-transition: all 200ms linear;
+        transition: all 200ms linear;
+}
+
+
+/* OTROS */
+
+.nav-select
+{
+    background-color: #11132c;
+    border-bottom: 3px solid var(--azul);
+}
+
+.ml-auto, .mx-auto 
+{
+    margin-left: auto;
+}
+
+.mr-auto, .mx-auto 
+{
+    margin-right: auto;
+}
+
+.full-height
+{
+    min-height: 100vh;
+}
+
+@keyframes top 
+{
+    0% 
+    {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    
+    100% 
+    {
+        opacity: 1;
+        transform: none;
+    }
+}
