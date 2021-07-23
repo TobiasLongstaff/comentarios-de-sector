@@ -77,6 +77,6 @@
         </div>
     </div>
 </body>    
-    <script src="assets/plugins/jquery-3.5.1.min.js"></script>
-    <script src="assets/scripts/login-registro.js"></script>
+<script src="assets/plugins/jquery-3.5.1.min.js"></script>
+<script src="assets/scripts/login-registro.js"></script>
 </html>

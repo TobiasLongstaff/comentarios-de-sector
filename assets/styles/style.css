@@ -84,6 +84,11 @@ nav:before {
     margin-bottom: 10px;
 }
 
+.titulo-crear-comentario
+{
+    margin: 20px 0;
+}
+
 h2
 {
     font-weight: 600;
@@ -93,6 +98,47 @@ h2
 
 /* CONTAINER */
 
+.container-controles
+{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.container-perfil
+{
+    margin-top: 20px;
+}
+
+.container-icono
+{
+    font-size: 90px;
+}
+
+.container-btn-comentario
+{
+    display: flex;
+    gap: 10px;
+}
+
+.container-text-comentario
+{
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-top: 10px;
+}
+
+.container-agregar-comentarios
+{
+    background: radial-gradient(circle, #1a2049 0%, #13162f 100%);
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 20px;
+    -webkit-animation: top 1s var(--delay) both;
+    animation: top 1s var(--delay) both;
+}
+
 .container-activos-del-dia
 {
     padding-top: 10px;
@@ -101,14 +147,45 @@ h2
     flex-grow: 1;
 }
 
-.container-comentario
+.container-comentario, .container-cerrar-comentario, .container-info-usuario, .container-adm
 {
     background: radial-gradient(circle, #1a2049 0%, #13162f 100%);
     border-radius: 4px;
     padding: 20px;
-    margin-top: 10px;
+    margin-top: 20px;
     -webkit-animation: top 1s var(--delay) both;
     animation: top 1s var(--delay) both;
+}
+
+.container-adm
+{
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    height: 300px;
+    padding-top: 40px;
+}
+
+.container-card
+{
+    background: linear-gradient(325deg, #1a1d3a 0%, #212752 100%);
+    width: 100%;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.container-tabla
+{
+    width: 100%;
+    max-height: 300px;
+    overflow: auto;
+    border-radius: 4px;
+}
+
+.container-info-perfil
+{
+    display: flex;
+    align-items: center;
 }
 
 .container-alerta
@@ -189,10 +266,9 @@ h2
 {
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, #1a2049 0%, #0c0f27 100%);
+    background: radial-gradient(circle, #1a2049 0%, #13162f 100%);
     background-position: bottom center;
     background-repeat: no-repeat;
-    background-size: 300%;
     position: absolute;
     border-radius: 6px;
     left: 0;
@@ -212,14 +288,6 @@ h2
 
 .center-wrap
 {
-    /* position: absolute;
-    width: 100%;
-    padding: 0 35px;
-    top: 50%;
-    left: 0;
-    transform: translate3d(0, -50%, 35px) perspective(100px);
-    
-    display: block; */
     padding: 0 30px;
     padding-top: 35px;
 }
@@ -236,7 +304,7 @@ h2
     width: 100%;
 }
 
-.form-style, .form-style-selectlist
+.form-style, .form-style-selectlist, .form-style-date, .form-style-textarea
 {
     padding: 13px 20px;
     padding-left: 55px;
@@ -253,6 +321,73 @@ h2
     -webkit-transition: all 200ms linear;
     transition: all 200ms linear;
     box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+}
+
+.form-style-textarea
+{
+    padding-left: 20px;
+    width: calc(100% - 40px);
+    resize: none;
+    height: 100px;
+    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-style-date
+{
+    padding-left: 20px;
+    width: calc(100% - 40px);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator 
+{
+    color: transparent;
+    background: none;
+    z-index: 1;
+}
+
+input[type="date"]:before 
+{
+    color: transparent;
+    background: none;
+    display: block;
+    font-family: 'unicons';
+    content: '\e9bd';
+    width: 15px;
+    font-size: 20px;
+    height: 20px;
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    color: white;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator 
+{
+    color: transparent;
+    background: none;
+    z-index: 1;
+}
+
+input[type="time"]:before 
+{
+    color: transparent;
+    background: none;
+    display: block;
+    font-family: 'unicons';
+    content: '\e920';
+    width: 15px;
+    font-size: 20px;
+    height: 20px;
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    color: white;
+}
+
+.form-style-date
+{
+    font-family: 'Poppins', sans-serif;
 }
 
 .form-style-selectlist
@@ -407,6 +542,60 @@ input:-webkit-autofill:active
 
 /* BOTONES */
 
+.btn-editar
+{
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 5px;
+    height: 40px;
+    width: 45px;
+    outline: 0;
+    font-size: 20px;
+    margin-right: 10px;
+    border: 2px solid var(--verde);
+    color: var(--verde);
+}
+
+.btn-editar:hover
+{
+    background-color: var(--verde);
+    color: white;
+    transition: .3s ease;
+}
+
+.btn-editar:active
+{
+    transform: scale(1.05);
+}
+
+.btn-eliminar
+{
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    margin-top: 5px;
+    height: 40px;
+    width: 45px;
+    outline: 0;
+    font-size: 20px;
+    margin-right: 10px;
+    border: 2px solid var(--rojo);
+    color: var(--rojo);
+}
+
+.btn-eliminar:hover
+{
+    background-color: var(--rojo);
+    color: white;
+    transition: .3s ease;
+}
+
+.btn-eliminar:active
+{
+    transform: scale(1.05);
+}
+
 .btn-nav
 {
     color: var(--font);
@@ -422,7 +611,7 @@ input:-webkit-autofill:active
     background-color: transparent;
 }
 
-.btn-acceder 
+.btn-acceder, .btn-enviar-comentario, .btn-cancelar-comentario, .btn-cerrar-comentario
 {
     width: 100%;
     height: 40px;
@@ -437,8 +626,65 @@ input:-webkit-autofill:active
         transition: all 200ms linear;
 }
 
+.btn-cerrar-comentario
+{
+    margin-top: 15px;
+    background-color: var(--rojo);
+    box-shadow: 0 8px 24px 0 rgba(255, 83, 83,  .3);
+}
+
+.btn-enviar-comentario
+{
+    margin-top: 10px;
+}
+
+.btn-cancelar-comentario
+{
+    margin-top: 10px;
+    background-color: #2e3984;
+    box-shadow: 0 8px 24px 0 rgb(75 89 181 / 30%);
+}
+
 
 /* OTROS */
+
+table
+{
+    border: 1px solid white;
+    width: 100%;
+    border-radius: 4px;
+    padding: 20px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+tr
+{
+    border-bottom: solid 1px white;
+}
+
+td
+{
+    padding: 15px 0;
+    max-width: 70px;
+    vertical-align:middle;
+    font-weight: 300;
+    font-size: 14px;
+} 
+
+.td-id
+{
+    padding-left: 20px;
+}
+
+thead tr
+{
+    padding: 20px 15px;
+    text-align: left;
+    font-size: 14px;
+    text-transform: uppercase;
+}
 
 .nav-select
 {

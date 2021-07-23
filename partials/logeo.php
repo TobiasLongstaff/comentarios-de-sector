@@ -15,6 +15,7 @@
             $filas = mysqli_fetch_array($resultado);
 
             $_SESSION['id_usuario'] = $filas['id'];
+            $_SESSION['tipo_usuario'] = $filas['tipo'];
 
             echo '1';
         }
