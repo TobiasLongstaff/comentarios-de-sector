@@ -12,27 +12,40 @@ $(document).ready(() =>
             {
                 let comentarios = JSON.parse(response);
                 let plantilla = '';
-                
-                comentarios.forEach(comentario =>
+
+                if(response == '[]')
                 {
                     plantilla += 
-                    `
-                    <div class="container-cerrar-comentario" filaId="${comentario.id}" style="--delay: .${comentario.cont}s">
-                        <div>
-                            <i class="uil uil-clock-three"></i> 
-                            <label>${comentario.fecha}</label>
-                            <label>${comentario.hora}</label>
+                    `<div class="container-mensaje-comentario" style="--delay: .1s">
+                        <i class="uil uil-comment-alt-question"></i>
+                        <h3>No se encontraron comentarios</h3>
+                        <label>No tienes comentarios para cerrar en este momento</label>
+                    </div>`
+                    $('#cerrar-comentarios').html(plantilla);
+                }
+                else
+                {
+                    comentarios.forEach(comentario =>
+                    {
+                        plantilla += 
+                        `
+                        <div class="container-cerrar-comentario" filaId="${comentario.id}" style="--delay: .${comentario.cont}s">
+                            <div>
+                                <i class="uil uil-clock-three"></i> 
+                                <label>${comentario.fecha}</label>
+                                <label>${comentario.hora}</label>
+                            </div>
+                            <h2 class="titulo-comentario">${comentario.motivo}</h2>
+                            <div>
+                                <label class="text-sector">Sector: ${comentario.sector}</label>
+                            </div>
+                            <p>${comentario.comentario}</p>
+                            <button type="button" class="btn-cerrar-comentario">Cerrar</button>
                         </div>
-                        <h2 class="titulo-comentario">${comentario.motivo}</h2>
-                        <div>
-                            <label class="text-sector">Sector: ${comentario.sector}</label>
-                        </div>
-                        <p>${comentario.comentario}</p>
-                        <button type="button" class="btn-cerrar-comentario">Cerrar</button>
-                    </div>
-                    `                           
-                });
-                $('#cerrar-comentarios').html(plantilla);
+                        `                           
+                    });
+                    $('#cerrar-comentarios').html(plantilla);
+                }
             }
         });        
     }

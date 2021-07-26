@@ -7,7 +7,7 @@
     {
         $nombre = $_POST['nombre'];
 
-        $sql = "INSERT INTO frigorifico (nombre) VALUES ('$nombre')";
+        $sql = "INSERT INTO motivo (nombre) VALUES ('$nombre')";
         $resultado = mysqli_query($conexion, $sql);
         if(!$resultado)
         {

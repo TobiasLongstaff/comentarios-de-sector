@@ -23,9 +23,9 @@
         {
             if($password == $password_con)
             {
-                $sql = "INSERT INTO usuarios (mail, password, nombre_apellido, hash, planta, sector
+                $sql = "INSERT INTO usuarios (mail, password, nombre_apellido, hash, planta, sector, tipo
                 ) VALUES ('$mail', '$password', '$nombre_apellido', 
-                '$hash', '$planta', '$sector')";
+                '$hash', '$planta', '$sector', 'Pendiente')";
                 $resultado = mysqli_query($conexion, $sql);
                 if(!$resultado)
                 {
@@ -35,6 +35,10 @@
                 { 
                     echo '1';
                 }
+            }
+            else
+            {
+                echo 'Las contraseñas no son iguales';
             }
         }
     }

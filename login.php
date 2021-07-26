@@ -1,6 +1,6 @@
 	<div class="container-alerta">
         <i class="uil uil-exclamation-triangle"></i>
-        <label>Error: Lorem, ipsum dolor 404</label>
+        <label id="text-alerta">Error: Lorem, ipsum dolor 404</label>
     </div>
     <div class="section">
         <div class="container">

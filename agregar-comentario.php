@@ -11,6 +11,10 @@
     date_default_timezone_set('America/Buenos_Aires');
     $fecha_actual = date('Y-m-d'); 
 ?>
+    <div class="container-alerta">
+        <i class="uil uil-exclamation-triangle"></i>
+        <label id="text-alerta">Error: Lorem, ipsum dolor 404</label>
+    </div>
     <div class="container-activos-del-dia">
         <nav>
             <a href="index.php">
@@ -46,12 +50,12 @@
                     </div>       
                     <div class="form-group">
                         <select id="com-sector" class="form-style-selectlist" autocomplete="off" required>
-                            <option value="Desposte">Desposte</option>
                         </select>
                         <i class="input-icon uil uil-chart-pie-alt"></i>
                     </div>    
                     <div class="form-group">
-                        <input type="text" id="com-motivo" class="form-style" placeholder="Motivo" autocomplete="off" required>
+                        <select id="com-motivo" class="form-style-selectlist" autocomplete="off" required>
+                        </select>
                         <i class="input-icon uil uil-exclamation-octagon"></i>
                     </div>    
                     <div class="container-text-comentario">

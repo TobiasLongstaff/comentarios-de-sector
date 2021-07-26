@@ -16,6 +16,14 @@ $(document).ready(() =>
             else
             {
                 console.log(data);
+                $('#text-alerta').html(data);
+                $('.container-alerta').css(
+                {
+                    'background': 'var(--rojo)'
+                });
+                $('.container-alerta').addClass("active");
+
+                setTimeout(ocultar_alerta,5000);
             }
         }); 
         e.preventDefault();   
@@ -35,27 +43,37 @@ $(document).ready(() =>
         $.post('partials/crear-cuenta.php', postData, function (data)
         {    
             console.log(data)      
-            let plantilla = '';
             if(data == '1')
             {
-                Swal.fire(
-                    '¡Usuario registrado correctamente!',
-                    'Recibirás un mail con la información de tu cuenta.',
-                    'success'
-                )
+                $('#text-alerta').html('¡Usuario registrado correctamente!');
+                $('.container-alerta').css(
+                {
+                    'background': 'var(--verde)'
+                });
+                $('.container-alerta').addClass("active");
+
+                setTimeout(ocultar_alerta,5000);   
                 const form = document.getElementById("form-registrarse");
                 form.reset();
             }
             else
             {
-                plantilla +=
-                `
-                    <span><i class="fas fa-exclamation-triangle"></i> ${data}</span>
-                `            
-            }
-            // $('#alerta-registro').html(plantilla);       
+                $('#text-alerta').html(data);
+                $('.container-alerta').css(
+                {
+                    'background': 'var(--rojo)'
+                });
+                $('.container-alerta').addClass("active");
+
+                setTimeout(ocultar_alerta,5000);          
+            }      
 
         });
         e.preventDefault();
     });
+
+    function ocultar_alerta()
+    {
+        $('.container-alerta').removeClass("active");
+    }
 })
