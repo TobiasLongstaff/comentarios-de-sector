@@ -5,7 +5,7 @@
 
     if(empty($_SESSION['id_usuario']))
     {
-        require 'login.php';
+        header('Location: index.php');
     }
 
     date_default_timezone_set('America/Buenos_Aires');

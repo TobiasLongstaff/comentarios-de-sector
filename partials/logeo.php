@@ -13,11 +13,22 @@
         if($numero_fila == '1')
         {
             $filas = mysqli_fetch_array($resultado);
+            $tipo_usuario = $filas['tipo'];
 
-            $_SESSION['id_usuario'] = $filas['id'];
-            $_SESSION['tipo_usuario'] = $filas['tipo'];
+            if($tipo_usuario == 'Aprobada' || $tipo_usuario == 'admin')
+            {
+                $_SESSION['id_usuario'] = $filas['id'];
+                $_SESSION['tipo_usuario'] = $tipo_usuario;
+                $_SESSION['sector_usuario'] = $filas['sector'];
+                $_SESSION['nombre_usuario'] = $filas['nombre_apellido'];
+                $_SESSION['mail_usuario'] = $filas['mail'];
 
-            echo '1';
+                echo '1';                
+            }
+            else
+            {
+                echo 'Su cuenta está pendiente de aprobación';
+            }
         }
         else
         {

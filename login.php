@@ -1,4 +1,9 @@
-	<div class="container-alerta">
+<?php
+
+    require 'partials/conexion.php';
+
+?>
+    <div class="container-alerta">
         <i class="uil uil-exclamation-triangle"></i>
         <label id="text-alerta">Error: Lorem, ipsum dolor 404</label>
     </div>
@@ -53,16 +58,33 @@
                                         <div class="form-group">
                                             <select class="form-style-selectlist" id="regis-planta" required>
                                                 <option value="" disabled selected>Planta</option>
-                                                <option value="FrigoPico">FrigoPico</option>
-                                                <option value="Trenel">Trenel</option>
-                                                <option value="Landl">Landl</option>
+                                                <?php
+                                                    $sql="SELECT * FROM frigorifico";
+                                                    $resultado=mysqli_query($conexion,$sql);
+                                                    while($filas = mysqli_fetch_array($resultado))
+                                                    {
+                                                ?>
+                                                        <option value="<?=$filas['nombre']?>"><?=$filas['nombre']?></option>
+                                                <?php
+                                                    }
+                                                ?>
                                             </select>
                                             <i class="input-icon uil uil-building"></i>
                                         </div>	
                                         <div class="form-group">
                                             <select class="form-style-selectlist" id="regis-sector" required>
                                                 <option value="" disabled selected>Sector</option>
-                                                <option value="Admin">Admin</option>
+                                                <?php
+                                                    $sql="SELECT * FROM sector";
+                                                    $resultado=mysqli_query($conexion,$sql);
+                                                    while($filas = mysqli_fetch_array($resultado))
+                                                    {
+                                                ?>
+                                                        <option value="<?=$filas['nombre']?>"><?=$filas['nombre']?></option>
+                                                <?php
+                                                    }
+                                                    mysqli_close($conexion);   
+                                                ?>
                                             </select>
                                             <i class="input-icon uil uil-chart-pie-alt"></i>
                                         </div>                                        

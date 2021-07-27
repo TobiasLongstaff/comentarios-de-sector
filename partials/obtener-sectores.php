@@ -1,10 +1,20 @@
 <?php
 
     require 'conexion.php';
+    session_start();
 
     $contador = 0;
 
-    $sql="SELECT * FROM sector";
+    if($_SESSION['tipo_usuario'] == 'admin' or $_SESSION['sector_usuario'] == 'todos')
+    {
+        $sql="SELECT * FROM sector";
+    }
+    else
+    {
+        $sector = $_SESSION['sector_usuario'];
+        $sql="SELECT * FROM sector WHERE nombre = '$sector'";
+    }
+    
     $resultado=mysqli_query($conexion,$sql);
     $json = array();
     while($filas = mysqli_fetch_array($resultado))

@@ -5,7 +5,7 @@
 
     if(empty($_SESSION['id_usuario']))
     {
-        require 'login.php';
+        header('Location: index.php');
     }
 ?>
 <div class="container-activos-del-dia">
@@ -38,9 +38,9 @@
                     <i class="container-icono uil uil-user-circle"></i>
                 </div>
                 <div>
-                    <label>Usuario: Tobias Longstaff</label><br>
-                    <label>E-mail: tobilongstaff@gmail.com</label><br>
-                    <label>Sector: Admin</label>                
+                    <label>Usuario: <?=$_SESSION['nombre_usuario']?></label><br>
+                    <label>E-mail: <?=$_SESSION['mail_usuario']?></label><br>
+                    <label>Sector: <?=$_SESSION['sector_usuario']?></label>             
                 </div>                
             </div>
             <a href="cerrarsesion.php">
