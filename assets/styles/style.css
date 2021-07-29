@@ -113,7 +113,26 @@ h2
     margin-bottom: 40px;
 }
 
+.mensaje
+{
+    color: var(--font); 
+    text-align: center;
+}
+
 /* CONTAINER */
+
+.container-datos-usuario
+{
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+#container-aprobar-cliente
+{
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+}
 
 .container-mensaje-comentario
 {
@@ -351,6 +370,16 @@ h2
 }
 
 /* TEXTBOX */
+
+.textbox-verificacion-usuario
+{
+    color: var(--font);
+    border: none;
+    font-size: 15px;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    width: 280px;
+}
 
 .form-group
 { 
@@ -754,6 +783,17 @@ input:-webkit-autofill:active
 .full-height
 {
     min-height: 100vh;
+}
+
+.selectlist-permisos
+{
+    border: 2px solid var(--azul);
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--azul);
+    height: 40px;
+    width: 120px;
+    font-size: 15px;
 }
 
 @keyframes top 

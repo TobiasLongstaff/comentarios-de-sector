@@ -128,8 +128,7 @@
                                         datos para dar de alta su cuente, una vez esté aprobado llegara un mail <br>
                                         de aviso. Gracias por utilizar SistComenSector<br>
                                         En caso de inconvenientes contactar con soporte técnico.</h2>              
-                                </div>
-                                <a style="color: #ffffff;" href="https://sistcomensector.com/">Iniciar sesión</a>                 
+                                </div>               
                             </div>
                         </div>
                     </body>';
@@ -224,7 +223,7 @@
                                     <h2 style="color: #7D7D7D;">'.$planta.'</h2>       
                                     <h2 style="color: #7D7D7D;">'.$sector.'</h2>              
                                 </div>
-                                <a style="color: #ffffff;" href="http://localhost/comentarios-de-sector/aprobar-usuario.php?mail='.$mail_cliente.'&hash='.$hash.'">Activar cuenta</a>                 
+                                <a style="color: #ffffff;" href="http://sistcomensector.com/aprobar-usuario.php?mail='.$mail_cliente.'&hash='.$hash.'">Activar cuenta</a>                 
                             </div>
                         </div>
                     </body>';

@@ -10,76 +10,61 @@
 
 
     $id = '';
-    $nombre = '';
-    $apellido = '';
-    $cuit = '';
-    $razon_socual = '';
+    $nombre_apellido = '';
     $hash = '';
-    $correo = '';
 
     if(isset($_GET['hash']) && isset($_GET['mail']))
     {
         $mail_usuario = $_GET['mail'];
         $hash = $_GET['hash'];
         
-        $sql="SELECT * FROM usuario WHERE mail = '$mail_usuario' AND hash = '$hash'";
+        $sql="SELECT * FROM usuarios WHERE mail = '$mail_usuario' AND hash = '$hash'";
         $resultado=mysqli_query($conexion,$sql);
         while($filas = mysqli_fetch_array($resultado))
         {
             $id = $filas['id'];
-            $nombre = $filas['nombre'];
-            $apellido = $filas['apellido'];
-            $cuit = $filas['cuit'];
-            $razon_socual = $filas['razon_social'];
-            $correo = $filas['mail'];
-            $hash = $filas['hash'];
+            $nombre_apellido = $filas['nombre_apellido'];
+            $planta = $filas['planta'];
+            $sector = $filas['sector'];
         }
     }
 ?>
-        <main id="contenido-aprobar-cliente">
+        <main id="container-aprobar-cliente">
             <div class="mensaje">
-                <h1>Verificación y Aprobación de Cliente</h1>
-                <form id="from-aprobar-cliente" method="POST">                 
-                   <div class="contenido-datos-cliente">                 
-                       <h2>Datos del cliente</h3>
-                       <hr>
-                       <p class="datos-cliente">id: <?=$id?></p><br>   
-                       <p class="datos-cliente">Nombre: <?=$nombre?></p><br>
-                       <p class="datos-cliente">Apellido: <?=$apellido?></p><br>
-                       <p class="datos-cliente">Cuit: <?=$cuit?></p><br>
-                       <p class="datos-cliente">Razon Social: <?=$razon_socual?></p><br>
-                       <span class="datos-cliente">Mail: </span>
-                       <input class="datos-verificacion-cliente" type="text" id="mail-cliente" value="<?=$correo?>" require disabled>
-                       <span class="datos-cliente">Hash: </span>
-                       <input class="datos-verificacion-cliente" type="text" id="hash-cliente" value="<?=$hash?>" require disabled>
-                   </div>  
-                   <select class="selectlist-permisos" id="selectlist-permisos">
-                       <option value="editor" calss="selectlist-editor">Editor</option>
-                       <option value="seguimiento" class="opcion">Seguimiento</option>
-                       <option value="aprobador-comercial" class="opcion">Aprobador Comercial</option>
-                       <option value="admin" class="opcion">Administrador</option>
-                   </select>
-                   <select class="selectlist-permisos" id="selectlist-sucursales">
-                   <?php
-                       $sql="SELECT * FROM clientes_establecimientos WHERE cuit = '$cuit'";
-                       $resultado=mysqli_query($conexion,$sql);
-                       while($filas = mysqli_fetch_array($resultado))
-                       {
-                           $nombre_sucursal = $filas['nombre_sucursal'];
-                           echo '<option value="'.$nombre_sucursal.'">'.$nombre_sucursal.'</option>';
-                       }    
-                   ?>
-                   </select>
-                   <select class="selectlist-permisos" id="selectlist-tipo">
-                       <option value="carniceria">Carniceria</option>
-                       <option value="gastronomia">Gastronomia</option>
-                   </select>
-                   <input class="btn-ingresar btn-aprobar-cuenta" type="submit" value="Aprobar Cuenta">
+                <h1>Verificación y Aprobación de Usuarios</h1>
+                <h2>Datos del usuario</h3>
+                <hr>
+                <form id="from-aprobar-usuario" method="POST">                 
+                    <div class="container-datos-usuario">                 
+                        <p>id: <?=$id?></p><br>   
+                        <p>Nombre y apellido: <?=$nombre_apellido?></p><br>
+                        <p>Planta: <?=$planta?></p><br>
+                        <p>Sector: <?=$sector?></p><br>
+                        <span>Mail: </span>
+                        <input class="textbox-verificacion-usuario" type="text" id="mail-usuario" value="<?=$mail_usuario?>" require disabled>
+                        <span>Hash: </span>
+                        <input class="textbox-verificacion-usuario" type="text" id="hash-usuario" value="<?=$hash?>" require disabled>
+                    </div>  
+                    <select class="selectlist-permisos" id="select-sector">
+                        <option value="" disabled selected>Sector</option>
+                        <option value="todos">Todos</option>
+                    <?php
+                        $sql="SELECT * FROM sector";
+                        $resultado=mysqli_query($conexion,$sql);
+                        while($filas = mysqli_fetch_array($resultado))
+                        {
+                            echo '<option value="'.$filas['nombre'].'">'.$filas['nombre'].'</option>';
+                        }   
+                        mysqli_close($conexion); 
+                    ?>
+                    </select>
+                    <select class="selectlist-permisos" id="select-permisos">
+                        <option value="" disabled selected>Permisos</option>
+                        <option value="estandar">Estandar</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                    <input class="btn-acceder" type="submit" value="Aprobar Cuenta">
                 </form>
-                <div class="conteiner-img-aprobacion">
-                    <img src="assets/img/frigopico.png" class="img-frigo-pico-aprobacion" alt="">
-                    <img src="assets/img/ohrapampa.png" class="img-ohrapampa-aprobacion" alt="">                    
-                </div>  
             </div>
         </main>
     </body>
