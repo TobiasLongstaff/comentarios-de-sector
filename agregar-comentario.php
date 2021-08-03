@@ -57,6 +57,21 @@
                         <select id="com-motivo" class="form-style-selectlist" autocomplete="off" required>
                         </select>
                         <i class="input-icon uil uil-exclamation-octagon"></i>
+                    </div>  
+                    <div class="form-group">
+                        <select id="com-prioridad" class="form-style-selectlist" autocomplete="off" required>
+                            <option value="" disabled selected>Prioridad</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                        </select>
+                        <i class="input-icon uil uil-arrows-shrink-v"></i>
                     </div>    
                     <div class="container-text-comentario">
                         <label>Comentario</label>

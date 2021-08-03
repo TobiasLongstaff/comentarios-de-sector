@@ -13,6 +13,7 @@ $(document).ready(() =>
             sector: $('#com-sector').val(),
             motivo: $('#com-motivo').val(),
             comentario: $('#com-comentario').val(),
+            prioridad: $('#com-prioridad').val(),
         };
         $.post('partials/crear-comentario.php', postData, function (data)
         {

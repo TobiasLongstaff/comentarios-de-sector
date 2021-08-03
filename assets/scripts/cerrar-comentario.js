@@ -40,7 +40,7 @@ $(document).ready(() =>
                                 <label class="text-sector">Sector: ${comentario.sector}</label>
                             </div>
                             <p>${comentario.comentario}</p>
-                            <button type="button" class="btn-cerrar-comentario">Cerrar</button>
+                            <button type="button" class="btn-cerrar-comentario" ${comentario.estado}>Cerrar</button>
                         </div>
                         `                           
                     });

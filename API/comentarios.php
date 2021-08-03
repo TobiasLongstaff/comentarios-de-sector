@@ -3,7 +3,7 @@
     include '../partials/conexion.php';
 
     $sql_select = "SELECT comentarios.id AS id_comentario, comentarios.fecha, comentarios.hora, 
-    comentarios.sector, comentarios.motivo, comentarios.comentario, comentarios.id_usuario, 
+    comentarios.sector, comentarios.motivo, comentarios.comentario, comentarios.id_usuario, comentarios.prioridad,
     comentarios.estado, usuarios.nombre_apellido
     FROM comentarios INNER JOIN usuarios ON comentarios.id_usuario = usuarios.id";
     $resultado_select=mysqli_query($conexion,$sql_select);
@@ -18,7 +18,8 @@
             'motivo' => $filas['motivo'],
             'comentario' => $filas['comentario'],
             'usuario' => $filas['nombre_apellido'],
-            'estado' => $filas['estado']
+            'estado' => $filas['estado'],
+            'prioridad' => $filas['prioridad'],
         );
     }         
 

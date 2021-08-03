@@ -11,9 +11,10 @@
         $motivo = $_POST['motivo'];
         $comentario = $_POST['comentario'];
         $id_usuario = $_SESSION['id_usuario'];
+        $prioridad = $_POST['prioridad'];
 
-        $sql = "INSERT INTO comentarios (fecha, hora, sector, motivo, comentario, id_usuario, estado) VALUES 
-        ('$fecha', '$hora', '$sector', '$motivo', '$comentario', '$id_usuario', 'Pendiente')";
+        $sql = "INSERT INTO comentarios (fecha, hora, sector, motivo, comentario, id_usuario, estado, prioridad) VALUES 
+        ('$fecha', '$hora', '$sector', '$motivo', '$comentario', '$id_usuario', 'Pendiente', '$prioridad')";
         $resultado = mysqli_query($conexion, $sql);
         if(!$resultado)
         {

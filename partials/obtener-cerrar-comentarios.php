@@ -7,12 +7,22 @@
     date_default_timezone_set('America/Buenos_Aires');
     $fecha_actual = date('Y-m-d'); 
 
-    $sql="SELECT * FROM comentarios WHERE estado = 'Pendiente'";
+    $sql="SELECT * FROM comentarios ORDER BY estado DESC";
     $resultado=mysqli_query($conexion,$sql);
     $json = array();
     while($filas = mysqli_fetch_array($resultado))
     {
         $contador = $contador + 1;
+        $estado_comentarios = $filas['estado'];
+
+        if($estado_comentarios == 'Cerrado')
+        {
+            $estado = 'disabled';
+        }
+        else
+        {
+            $estado = '';
+        }
 
         $json[] = array(
             'id' => $filas['id'],
@@ -21,7 +31,8 @@
             'sector' => $filas['sector'],
             'motivo' => $filas['motivo'],
             'comentario' => $filas['comentario'],
-            'cont' => $contador
+            'cont' => $contador,
+            'estado' => $estado
         );
     }
 

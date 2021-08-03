@@ -719,6 +719,13 @@ input:-webkit-autofill:active
     box-shadow: 0 8px 24px 0 rgba(255, 83, 83,  .3);
 }
 
+.btn-cerrar-comentario:disabled
+{
+    background-color: #282c77;
+    box-shadow: 0 8px 24px 0 rgba(50, 27, 175, .3);
+    color: var(--font);
+}
+
 .btn-enviar-comentario
 {
     margin-top: 10px;
