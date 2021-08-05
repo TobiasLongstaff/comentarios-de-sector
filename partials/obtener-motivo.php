@@ -13,6 +13,7 @@
         $json[] = array(
             'id' => $filas['id'],
             'nombre' => $filas['nombre'],
+            'prioridad' => $filas['prioridad'],
             'cont' => $contador
         );
     }

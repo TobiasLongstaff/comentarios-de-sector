@@ -81,6 +81,7 @@ $(document).ready(() =>
         const postData =
         {
             nombre: $('#nombre-motivo').val(),
+            prioridad: $('#prioridad-motivo').val(),
             id: $('#id-motivo').val()
         };
 
@@ -251,10 +252,16 @@ $(document).ready(() =>
         {
             const motivo = JSON.parse(data);
             $('#nombre-motivo').val(motivo.nombre);
+
+            var prioridad = motivo.prioridad;
+            var selectlist = document.getElementById(prioridad);
+            selectlist.selected = true;
+
         })
 
         $('#btn-agregar-nuevo-motivo').val('Editar');
         $('#btn-agregar-nuevo-motivo').css('background-color', '#15a95b')
+
         edit_motivo = true;
         $('#id-motivo').val(id);
         e.preventDefault();
@@ -276,7 +283,7 @@ $(document).ready(() =>
                     plantilla += 
                     `
                     <tr filaId="${planta.id}">
-                        <td class="td-id">${planta.id}</td>
+                        <td>${planta.id}</td>
                         <td>${planta.nombre}</td>
                         <td class="container-controles">
                             <button class="btn-editar editar-planta"><i class="uil uil-edit-alt"></i></button>
@@ -306,7 +313,7 @@ $(document).ready(() =>
                     plantilla += 
                     `
                     <tr filaId="${sector.id}">
-                        <td class="td-id">${sector.id}</td>
+                        <td>${sector.id}</td>
                         <td>${sector.nombre}</td>
                         <td class="container-controles">
                             <button class="btn-editar editar-sector"><i class="uil uil-edit-alt"></i></button>
@@ -336,8 +343,9 @@ $(document).ready(() =>
                     plantilla += 
                     `
                     <tr filaId="${motivo.id}">
-                        <td class="td-id">${motivo.id}</td>
+                        <td>${motivo.id}</td>
                         <td>${motivo.nombre}</td>
+                        <td class="td-id">${motivo.prioridad}</td>
                         <td class="container-controles">
                             <button class="btn-editar editar-motivo"><i class="uil uil-edit-alt"></i></button>
                             <button class="btn-eliminar eliminar-motivo"><i class="uil uil-trash-alt"></i></button>

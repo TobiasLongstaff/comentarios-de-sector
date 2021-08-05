@@ -7,8 +7,9 @@
     {
         $id_motivo = $_POST['id']; 
         $nombre = $_POST['nombre'];
+        $prioridad = $_POST['prioridad'];
 
-        $sql="UPDATE motivo SET nombre = '$nombre' WHERE id = '$id_motivo'";
+        $sql="UPDATE motivo SET nombre = '$nombre', prioridad = '$prioridad' WHERE id = '$id_motivo'";
         $resultado = mysqli_query($conexion,$sql);
         if(!$resultado)
         {
