@@ -61,6 +61,7 @@
                     <select class="selectlist-permisos" id="select-permisos">
                         <option value="" disabled selected>Permisos</option>
                         <option value="estandar">Estandar</option>
+                        <option value="hacienda">Hacienda</option>
                         <option value="admin">Administrador</option>
                     </select>
                     <input class="btn-acceder" type="submit" value="Aprobar Cuenta">

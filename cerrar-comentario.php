@@ -24,7 +24,19 @@
             <button class="btn-nav nav-select">
                 <i class="uil uil-comment-alt-slash"></i>
             </button>
-        </a>  
+        </a> 
+        <?php
+            if($_SESSION['tipo_usuario'] == 'hacienda')
+            {
+        ?>
+                <a href="prevision-de-hacienda.php">
+                    <button class="btn-nav">
+                        <i class="fas fa-horse-head"></i>
+                    </button>
+                </a>  
+        <?php
+            }
+        ?> 
         <a href="perfil.php">
             <button class="btn-nav">
                 <i class="uil uil-user-circle"></i>

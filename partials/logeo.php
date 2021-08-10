@@ -15,7 +15,7 @@
             $filas = mysqli_fetch_array($resultado);
             $tipo_usuario = $filas['tipo'];
 
-            if($tipo_usuario == 'estandar' || $tipo_usuario == 'admin')
+            if($tipo_usuario == 'estandar' || $tipo_usuario == 'admin' || $tipo_usuario == 'hacienda')
             {
                 $_SESSION['id_usuario'] = $filas['id'];
                 $_SESSION['tipo_usuario'] = $tipo_usuario;

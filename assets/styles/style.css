@@ -121,6 +121,20 @@ h2
 
 /* CONTAINER */
 
+.container-agregar-prevision
+{
+    display: none;
+}
+
+.container-btn-prevision
+{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    -webkit-animation: top 1s var(--delay) both;
+    animation: top 1s var(--delay) both;
+}
+
 .container-datos-usuario
 {
     margin-bottom: 30px;
@@ -180,7 +194,7 @@ h2
     margin-top: 10px;
 }
 
-.container-agregar-comentarios
+.container-agregar-comentarios, .container-agregar-prevision
 {
     background: radial-gradient(circle, #1a2049 0%, #13162f 100%);
     border-radius: 4px;
@@ -573,6 +587,12 @@ input:-webkit-autofill:active
     transition: all 200ms linear;
 }
 
+.textbox-kg
+{
+    width: 30%;
+    margin-bottom: 30px;
+}
+
 /* CHECKBOX */
 
 [type="checkbox"]:checked,
@@ -628,6 +648,28 @@ input:-webkit-autofill:active
 }
 
 /* BOTONES */
+
+.btn-prevision-left
+{
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.btn-prevision-right
+{
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.btn-general-prevision
+{
+    cursor: pointer;
+    width: 40%;
+    color: var(--azul);
+    height: 30px;
+    border: 1px solid var(--azul);
+    background-color: transparent;
+}
 
 .btn-editar
 {
@@ -741,6 +783,17 @@ input:-webkit-autofill:active
 
 /* OTROS */
 
+.prevision-select
+{
+    background-color: var(--azul);
+    color: white;
+}
+
+a
+{
+    text-decoration: none;
+}
+
 .table
 {
     text-align: left;
@@ -815,5 +868,22 @@ input:-webkit-autofill:active
     {
         opacity: 1;
         transform: none;
+    }
+}
+
+@media screen and (max-width: 425px)
+{
+    .btn-nav
+    {
+        padding: 20px 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } 
+
+    a
+    {
+        width: 100%;
     }
 }
