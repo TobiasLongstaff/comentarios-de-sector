@@ -3,7 +3,7 @@
     session_start();
     require 'partials/header.html';
 
-    if(empty($_SESSION['id_usuario']) or $_SESSION['tipo_usuario'] != 'hacienda')
+    if(empty($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'hacienda' || $_SESSION['tipo_usuario'] == 'admin')
     {
         header('Location: index.php');
     }

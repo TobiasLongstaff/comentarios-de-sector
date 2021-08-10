@@ -26,7 +26,7 @@
             </button>
         </a> 
         <?php
-            if($_SESSION['tipo_usuario'] == 'hacienda')
+            if($_SESSION['tipo_usuario'] == 'hacienda' || $_SESSION['tipo_usuario'] == 'admin')
             {
         ?>
                 <a href="prevision-de-hacienda.php">
