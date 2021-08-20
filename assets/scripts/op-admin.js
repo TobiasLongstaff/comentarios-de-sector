@@ -7,6 +7,25 @@ $(document).ready(() =>
     obtener_plantas();
     obtener_sectores();
     obtener_motivo();
+    obtener_usuarios();
+
+    $('#ver-abm').click(function(e)
+    {
+        $(this).addClass('prevision-select');
+        $('#ver-permisos-de-usaurio').removeClass('prevision-select');
+        $('#permisos-de-usuario').css('display', 'none');
+        $('#abm').css('display', 'block');
+        e.preventDefault();
+    })
+
+    $('#ver-permisos-de-usaurio').click(function(e)
+    {
+        $(this).addClass('prevision-select');
+        $('#ver-abm').removeClass('prevision-select');
+        $('#abm').css('display', 'none');
+        $('#permisos-de-usuario').css('display', 'block');
+        e.preventDefault();
+    })
 
     $("#form-agregar-planta").submit(function(e)
     {
@@ -50,7 +69,7 @@ $(document).ready(() =>
             id: $('#id-sector').val()
         };
 
-        let url = edit_planta === false ? 'partials/agregar-sector.php' : 'partials/editar-sector.php';
+        let url = edit_sector === false ? 'partials/agregar-sector.php' : 'partials/editar-sector.php';
 
         $.post(url, postData, function (data)
         {
@@ -102,6 +121,38 @@ $(document).ready(() =>
                 $('#btn-agregar-nuevo-motivo').val('Agregar');
                 $('#btn-agregar-nuevo-motivo').css('background-color', 'var(--azul)')
                 obtener_motivo();
+            }
+            else
+            {
+                console.log(data);
+            }
+        }); 
+        e.preventDefault();   
+    });
+
+    $("#form-actualizar-usuario").submit(function(e)
+    {
+        const postData =
+        {
+            permisos: $('#permisos-usu').val(),
+            sector: $('#sector-usu').val(),
+            planta: $('#planta-usu').val(),
+            id: $('#id-usu').val()
+        };
+
+        $.post('partials/editar-usuario.php', postData, function (data)
+        {
+            console.log(data)
+            if(data == "1")
+            {
+                Swal.fire(
+                    '¡Operación realizada exitosamente!',
+                    '',
+                    'success'
+                )
+                const form = document.getElementById("form-actualizar-usuario");
+                form.reset();
+                obtener_usuarios();
             }
             else
             {
@@ -207,6 +258,38 @@ $(document).ready(() =>
         e.preventDefault();
     })
 
+    $(document).on('click', '.eliminar-usuario', function(e)
+    {
+        let element = $(this)[0].parentElement.parentElement;
+        let id = $(element).attr('filaid');
+
+        Swal.fire(
+        {
+            title: '¿Queres eliminar este usuario?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => 
+        {
+            if (result.isConfirmed) 
+            {
+                $.post('partials/eliminar-usuario.php', {id}, function()
+                {
+                    Swal.fire(
+                        '¡Usuario eliminardo exitosamente!',
+                        '',
+                        'success'
+                    )
+                    obtener_usuarios();
+                });       
+            }
+        });
+        e.preventDefault();
+    })
+
     $(document).on('click', '.editar-planta', function(e)
     {
         let element = $(this)[0].parentElement.parentElement;
@@ -238,7 +321,7 @@ $(document).ready(() =>
 
         $('#btn-agregar-nuevo-sector').val('Editar');
         $('#btn-agregar-nuevo-sector').css('background-color', '#15a95b')
-        edit_planta = true;
+        edit_sector = true;
         $('#id-sector').val(id);
         e.preventDefault();
     })
@@ -264,6 +347,51 @@ $(document).ready(() =>
 
         edit_motivo = true;
         $('#id-motivo').val(id);
+        e.preventDefault();
+    })
+
+    $(document).on('click', '.editar-usuario', function(e)
+    {
+        let element = $(this)[0].parentElement.parentElement;
+        let id = $(element).attr('filaid');
+
+        $.post('partials/obtener-datos-usuarios.php', {id}, function(data)
+        {
+
+            const usuario = JSON.parse(data);
+            
+            // PERMISOS
+
+            var permisos_usuario = "op-"+usuario.permiso;
+            permisos_usuario = permisos_usuario.replace(' ', '-').toLowerCase();
+
+            var selectlist_permisos = document.getElementById(permisos_usuario);
+            selectlist_permisos.selected = true;
+
+            // SECTOR
+
+            var sector_usuario = "op-"+usuario.sector;
+            sector_usuario = sector_usuario.replace(' ', '-').toLowerCase();
+
+            console.log(sector_usuario);
+
+            var selectlist_sector = document.getElementById(sector_usuario);
+            selectlist_sector.selected = true;
+
+            // PLANTA
+
+            var permisos_planta = "op-"+usuario.planta;
+            permisos_planta = permisos_planta.replace(' ', '-').toLowerCase();
+
+            var selectlist_planta = document.getElementById(permisos_planta);
+            selectlist_planta.selected = true;
+            
+            console.log(permisos_usuario);
+
+            
+        })
+
+        $('#id-usu').val(id);
         e.preventDefault();
     })
 
@@ -354,6 +482,40 @@ $(document).ready(() =>
                     `                           
                 });
                 $('#container-motivos').html(plantilla);
+            }
+        });
+    }
+
+    function obtener_usuarios()
+    {
+        $.ajax(
+        {
+            url: 'partials/obtener-usuarios.php',
+            type: 'GET',
+            success: function (response)
+            {
+                let plantas = JSON.parse(response);
+                let plantilla = '';
+                
+                plantas.forEach(planta =>
+                {
+                    plantilla += 
+                    `
+                    <tr filaId="${planta.id}">
+                        <td>${planta.id}</td>
+                        <td>${planta.nombre}</td>
+                        <td>${planta.mail}</td>
+                        <td>${planta.planta}</td>
+                        <td>${planta.sector}</td>
+                        <td>${planta.permisos}</td>
+                        <td class="container-controles">
+                            <button class="btn-editar editar-usuario"><i class="uil uil-edit-alt"></i></button>
+                            <button class="btn-eliminar eliminar-usuario"><i class="uil uil-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                    `                           
+                });
+                $('#container-usuarios').html(plantilla);
             }
         });
     }

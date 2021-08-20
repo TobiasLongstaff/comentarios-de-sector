@@ -32,18 +32,11 @@
                     <i class="uil uil-comment-alt-slash"></i>
                 </button>
             </a>  
-            <?php
-                if($_SESSION['tipo_usuario'] == 'hacienda')
-                {
-            ?>
-                    <a href="prevision-de-hacienda.php">
-                        <button class="btn-nav nav-select">
-                            <i class="fas fa-horse-head"></i>
-                        </button>
-                    </a>  
-            <?php
-                }
-            ?>
+            <a href="prevision-de-hacienda.php">
+                <button class="btn-nav nav-select">
+                    <i class="fas fa-horse-head"></i>
+                </button>
+            </a>  
             <a href="perfil.php">
                 <button class="btn-nav">
                     <i class="uil uil-user-circle"></i>
@@ -59,7 +52,7 @@
             
         </div>
         <div id="agregar-prevision-de-hacienda" class="container-agregar-prevision">
-            <h2 class="titulo-crear-comentario">Crear Comentario</h2>
+            <h2 class="titulo-crear-comentario">Crear Prevision de hacienda</h2>
             <form method="POST" id="form-crear-prevision-de-hacienda">
                 <div class="form-group">
                     <input type="date" id="pre-fecha" class="form-style-date" value="<?=$fecha_actual?>" autocomplete="off" required>
