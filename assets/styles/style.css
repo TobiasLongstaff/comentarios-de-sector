@@ -751,7 +751,7 @@ input:-webkit-autofill:active
     background-color: transparent;
 }
 
-.btn-acceder, .btn-enviar-comentario, .btn-cancelar-comentario, .btn-cerrar-comentario
+.btn-acceder, .btn-enviar-comentario, .btn-cancelar-comentario, .btn-cerrar-comentario, .btn-eliminar-previcion
 {
     width: 100%;
     height: 40px;
@@ -767,7 +767,7 @@ input:-webkit-autofill:active
         transition: all 200ms linear;
 }
 
-.btn-cerrar-comentario
+.btn-cerrar-comentario, .btn-eliminar-previcion
 {
     margin-top: 15px;
     background-color: var(--rojo);

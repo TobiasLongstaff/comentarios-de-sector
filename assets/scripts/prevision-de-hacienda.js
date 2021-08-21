@@ -58,6 +58,33 @@ $(document).ready(() =>
         e.preventDefault();
     });   
 
+    $(document).on('click', '.btn-eliminar-previcion', function(e)
+    {
+        let element = $(this)[0].parentElement;
+        let id = $(element).attr('filaid');
+
+        Swal.fire(
+        {
+            title: '¿Queres eliminar esta prevision?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => 
+        {
+            if (result.isConfirmed) 
+            {
+                $.post('partials/eliminar-prevision.php', {id}, function()
+                {
+                    obtener_prevision_de_hacienda();
+                });       
+            }
+        });
+        e.preventDefault();
+    })
+
     function ocultar_alerta()
     {
         $('.container-alerta').removeClass("active");
@@ -97,6 +124,7 @@ $(document).ready(() =>
                                 <div>
                                     <label class="text-sector">Cantidad: ${comentario.kg}</label>
                                 </div>
+                                <button class="btn-eliminar-previcion">Eliminar</button>
                             </div>
                             `                           
                         });

@@ -3,7 +3,12 @@
     session_start();
     require 'partials/header.html';
 
-    if(empty($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'hacienda' || $_SESSION['tipo_usuario'] == 'admin')
+    if(empty($_SESSION['id_usuario']) && $_SESSION['tipo_usuario'] != 'hacienda')
+    {
+        header('Location: index.php');
+    }
+
+    if(empty($_SESSION['id_usuario']) && $_SESSION['tipo_usuario'] != 'admin')
     {
         header('Location: index.php');
     }
@@ -49,7 +54,6 @@
             <button id="agregar-prevision" class="btn-general-prevision btn-prevision-right">Agregar</button>
         </div>
         <div id="prevision-de-hacienda" class="container-ver-prevision">
-            
         </div>
         <div id="agregar-prevision-de-hacienda" class="container-agregar-prevision">
             <h2 class="titulo-crear-comentario">Crear Prevision de hacienda</h2>
@@ -74,6 +78,7 @@
     </div>
 </body>
 <script src="assets/plugins/jquery-3.5.1.min.js"></script>
+<script src="assets/plugins/sweetalert2.all.min.js"></script>
 <script src="assets/scripts/prevision-de-hacienda.js"></script>
 </html>
         
