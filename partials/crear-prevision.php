@@ -9,9 +9,11 @@
         $apellido = $_POST['apellido'];
         $cantidad = $_POST['cantidad'];
         $id_usuario = $_SESSION['id_usuario'];
+        $compra_local = $_POST['compra_local'];
+        $comisionista = $_POST['comisionista'];
 
-        $sql = "INSERT INTO prevision_de_hacienda (fecha, apellido, kg, id_usuario) VALUES 
-        ('$fecha', '$apellido', '$cantidad', '$id_usuario')";
+        $sql = "INSERT INTO prevision_de_hacienda (fecha, apellido, kg, compra_local, comisionista, id_usuario) VALUES 
+        ('$fecha', '$apellido', '$cantidad', '$compra_local', '$comisionista', '$id_usuario')";
         $resultado = mysqli_query($conexion, $sql);
         if(!$resultado)
         {

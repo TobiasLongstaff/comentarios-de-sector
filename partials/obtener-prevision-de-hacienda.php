@@ -4,7 +4,7 @@
 
     $contador = 2;
 
-    $sql="SELECT * FROM prevision_de_hacienda";
+    $sql="SELECT * FROM prevision_de_hacienda ORDER BY FECHA DESC";
     $resultado=mysqli_query($conexion,$sql);
     $json = array();
     while($filas = mysqli_fetch_array($resultado))
@@ -16,6 +16,8 @@
             'fecha' => $filas['fecha'],
             'apellido' => $filas['apellido'],
             'kg' => $filas['kg'],
+            'compra_local' => $filas['compra_local'],
+            'comisionista' => $filas['comisionista'],
             'cont' => $contador
         );
     }

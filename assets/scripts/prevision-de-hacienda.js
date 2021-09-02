@@ -28,6 +28,8 @@ $(document).ready(() =>
             fecha: $('#pre-fecha').val(),
             apellido: $('#pre-apellido').val(),
             cantidad: $('#pre-cantidad').val(),
+            comisionista: $('#pre-comisionista').val(),
+            compra_local: $('#pre-compra-local').val()
         };
         $.post('partials/crear-prevision.php', postData, function (data)
         {
@@ -124,6 +126,8 @@ $(document).ready(() =>
                                 <div>
                                     <label class="text-sector">Cantidad: ${comentario.kg}</label>
                                 </div>
+                                <p>Comisionista: ${comentario.comisionista}</p>
+                                <p>Compra local: ${comentario.compra_local}</p>
                                 <button class="btn-eliminar-previcion">Eliminar</button>
                             </div>
                             `                           

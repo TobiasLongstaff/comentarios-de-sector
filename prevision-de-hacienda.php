@@ -66,6 +66,14 @@
                     <i class="input-icon uil uil-chart-pie-alt"></i>
                 </div>
                 <div class="form-group">
+                    <input id="pre-compra-local" class="form-style" placeholder="Compra Local" autocomplete="off" required>
+                    <i class="input-icon uil uil-shopping-cart"></i>
+                </div>
+                <div class="form-group">
+                    <input id="pre-comisionista" class="form-style" placeholder="Comisionista" autocomplete="off" required>
+                    <i class="input-icon uil uil-user-md"></i>
+                </div>
+                <div class="form-group">
                     <input id="pre-cantidad" class="form-style textbox-kg" placeholder="Cantidad" autocomplete="off" required>
                     <i class="input-icon uil uil-balance-scale"></i>
                 </div>
